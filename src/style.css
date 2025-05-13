@@ -5,9 +5,3 @@
 body {
   @apply bg-amber-50 min-h-screen;
 }
-
-
-
-.repo-card {
-  @apply hover:shadow-md transition-shadow;
-}
