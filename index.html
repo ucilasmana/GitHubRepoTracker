@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>GitHub Repo Tracker</title>
+  <link rel="stylesheet" href="./src/style.css">
+</head>
+<body>
+  <div class="h-screen text-amber-800 overflow-y-auto" id="app">
+    <div class="justify-center items-center h-2/5 flex flex-col gap-12 sm:gap-7 border-b-2 border-amber-500">
+      <div class="text-3xl font-bold ">GitHub Repo Tracker</div>
+      <div id="openSearch" class="shadow-inner border-amber-600 border-3 cursor-pointer p-3 bg-zinc-50/50 sm:w-1/2 rounded-full text-sm sm:text-base">What kind of project are you looking for?</div>
+      <!--Search Modal-->
+      <div class="hidden" id="searchModal">
+        <div class="absolute top-0 left-0 z-10 bg-amber-800/30 w-full h-full  flex flex-col justify-center items-center">
+          <div class=" w-full sm:w-5/6 md:w-2/3 flex flex-col justify-center items-center gap-8 overflow-hidden p-4">
+            <div class="self-end">
+              <svg id="closeSearch" class="hover:fill-amber-500 cursor-pointer self-end bg-amber-100 rounded-lg size-7 fill-amber-700" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path  d="M195.2 195.2a64 64 0 0 1 90.496 0L512 421.504 738.304 195.2a64 64 0 0 1 90.496 90.496L602.496 512 828.8 738.304a64 64 0 0 1-90.496 90.496L512 602.496 285.696 828.8a64 64 0 0 1-90.496-90.496L421.504 512 195.2 285.696a64 64 0 0 1 0-90.496z"></path></g></svg>
+            </div>
+          <div class="bg-amber-100 flex flex-col gap-8  rounded-2xl p-5 sm:p-10 md:p-14 h-fit w-full overflow-x-auto">
+            <h3 class="text-xl sm:text-2xl font-semibold text-center">What kind of project are you looking for?</h3>
+            <input id="searchInput" type="text" class="w-full border-2 border-amber-600 rounded-3xl px-3 py-2 bg-amber-50  outline-none" placeholder="Search">
+            <div class="break-all flex flex-col gap-3 
+            divide-y divide-amber-600  w-full text-sm sm:text-base " id="searchReposDiv">
+            </div>
+          </div>
+        
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="bg-amber-100 p-4 flex flex-col gap-6 min-h-3/5">
+      <div class="text-xl font-bold flex gap-2 items-center ">
+        <svg class="size-7  stroke-2 fill-amber-400 stroke-amber-600" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M20.808,11.079C19.829,16.132,12,20.5,12,20.5s-7.829-4.368-8.808-9.421C2.227,6.1,5.066,3.5,8,3.5a4.444,4.444,0,0,1,4,2,4.444,4.444,0,0,1,4-2C18.934,3.5,21.773,6.1,20.808,11.079Z"></path></g></svg>
+        <span>Favorite Repos</span>
+        </div>
+        <div class="p-3 break-all flex flex-col gap-3 
+            divide-y divide-amber-600  w-full text-sm sm:text-base " id="favoriteReposDiv">
+            </div>
+       
+    </div>
+    <!-- Filter -->
+     <details class="z-20 absolute bottom-4 sm:bottom-8 rounded-lg size-8 sm:size-9 right-4 sm:right-8
+     bg-amber-800 flex justify-center items-center">
+      <summary class="list-none cursor-pointer"><svg class="size-6 sm:size-7 fill-amber-50" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" ></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M11.1924 5.65685C11.5829 5.26633 11.5829 4.63316 11.1924 4.24264L8.36397 1.41421C8.30576 1.356 8.24485 1.30212 8.18165 1.25259C7.50286 0.720577 6.55947 0.689024 5.84929 1.15793C5.73839 1.23115 5.63317 1.31658 5.53554 1.41421L2.70711 4.24264C2.31658 4.63316 2.31658 5.26633 2.70711 5.65685C3.09763 6.04738 3.7308 6.04738 4.12132 5.65685L6.00003 3.77814V18C6.00003 18.5523 6.44775 19 7.00003 19C7.55232 19 8.00003 18.5523 8.00003 18V3.8787L9.77818 5.65685C10.1687 6.04737 10.8019 6.04737 11.1924 5.65685Z"></path> <path d="M12.7071 18.3432C12.3166 18.7337 12.3166 19.3668 12.7071 19.7574L15.5355 22.5858C15.6332 22.6834 15.7384 22.7689 15.8493 22.8421C16.6256 23.3546 17.6805 23.2692 18.364 22.5858L21.1924 19.7574C21.5829 19.3668 21.5829 18.7337 21.1924 18.3432C20.8019 17.9526 20.1687 17.9526 19.7782 18.3432L18 20.1213L18 6C18 5.44771 17.5523 5 17 5C16.4477 5 16 5.44771 16 6L16 20.2218L14.1213 18.3432C13.7308 17.9526 13.0976 17.9526 12.7071 18.3432Z" ></path> </g></svg></summary>
+      <div class="absolute right-0 bottom-12 flex items-end flex-col gap-2 text-sm sm:text-base">
+        <span class="font-bold">Sort By</span>
+        <div id="sortByStars" class="cursor-pointer bg-amber-300 rounded-lg py-1 px-2 w-fit shadow font-medium">Stars</div>
+        <div id="sortByForks"  class="cursor-pointer bg-amber-300 rounded-lg py-1 px-2 w-fit shadow font-medium">Forks</div>
+        <div id="sortByUpdated"  class="cursor-pointer bg-amber-300 rounded-lg py-1 px-2 shadow w-fit font-medium">Updated</div>
+      </div>
+     </details>
+    <div >
+    
+    </div>
+    <!-- Static HTML Structure -->
+  
+  </div>
+  <script type="module" src="/src/main.ts"></script>
+</body>
+</html>
