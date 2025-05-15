@@ -2,13 +2,13 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <link rel="icon" type="image/svg+xml" href="/public/github.svg" />
+  <link rel="icon" type="image/svg+xml" href="/github.svg" />
   <title>GitHub Repo Tracker</title>
   <link rel="stylesheet" href="./src/style.css">
 </head>
 <body>
-  <div class="h-screen text-amber-800 overflow-y-auto" id="app">
-    <div class="justify-center items-center h-2/5 flex flex-col gap-12 sm:gap-7 border-b-2 border-amber-500">
+  <div class="h-screen bg-amber-100 text-amber-800 overflow-y-auto" id="app">
+    <div class="justify-center items-center bg-amber-50 py-20 flex flex-col gap-7 border-b-2 border-amber-500">
       <div class="text-3xl font-bold ">GitHub Repo Tracker</div>
       <div id="openSearch" class="shadow-inner border-amber-600 border-3 cursor-pointer p-3 bg-zinc-50/50 sm:w-1/2 rounded-full text-sm sm:text-base">What kind of project are you looking for?</div>
       <!--Search Modal-->
@@ -29,16 +29,15 @@
           </div>
         </div>
       </div>
+      <!---------------->
     </div>
-    <div class="bg-amber-100 p-4 flex flex-col gap-6 min-h-3/5">
+    <div class="p-4 flex flex-col gap-6">
       <div class="text-xl font-bold flex gap-2 items-center ">
         <svg class="size-7  stroke-2 fill-amber-400 stroke-amber-600" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M20.808,11.079C19.829,16.132,12,20.5,12,20.5s-7.829-4.368-8.808-9.421C2.227,6.1,5.066,3.5,8,3.5a4.444,4.444,0,0,1,4,2,4.444,4.444,0,0,1,4-2C18.934,3.5,21.773,6.1,20.808,11.079Z"></path></g></svg>
         <span>Favorite Repos</span>
         </div>
-        <div class="p-3 break-all flex flex-col gap-3 
-            divide-y divide-amber-600  w-full text-sm sm:text-base " id="favoriteReposDiv">
-            </div>
-       
+        <div class="p-3 break-all flex flex-col gap-3 divide-y divide-amber-600  w-full text-sm sm:text-base " id="favoriteReposDiv">
+        </div>
     </div>
     <!-- Filter -->
      <details class="z-20 absolute bottom-4 sm:bottom-8 rounded-lg size-8 sm:size-9 right-4 sm:right-8
